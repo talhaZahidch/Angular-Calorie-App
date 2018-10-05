@@ -1,0 +1,103 @@
+<div class="container">
+<div class="row pt-10">
+<div class="col-md-8">
+    <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6 text-center  pr-0">
+              <div class="units" (click)="select(1)" [ngClass]="{active_back: isActive(1)}">
+                  <h4>US Units</h4></div>
+            </div>
+            <div class="col-xs-6 text-center pl-0"  >
+              <div class="units" (click)="select(2)" [ngClass]="{active_back: isActive(2)}">
+              <h4>Metric Units</h4>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+                <form (ngSubmit)="OnSubmit()" #f="ngForm" ng-class="{'submitted': submitted}">
+                    <div class="form-group">
+                      <input type="number" 
+                      (focus)="notFocused=false" class="form-control input-lg"  placeholder="Age (eg. 28 Years)" ngModel name="age" required>
+                    </div>
+                    <div class="row ">
+                      <div class="col-md-12">
+                        <div class="form-group border_tab pading-radio">
+                      <label><input type="radio" class="radio-inline" name="gender" value="1" ngModel><span class="outside"><span class="inside"></span></span>Male</label>
+                      <label><input type="radio" class="radio-inline" name="gender" value="2" ngModel><span class="outside"><span class="inside"></span></span>Female</label>
+                     </div></div>
+                  </div>
+                  <div class="form-row" *ngIf="show_us_fields">
+                      <div class="form-group col-md-6 p-0">
+                        <input type="number" (focus)="notFocused=false"class="form-control input-lg" placeholder="Height (eg. 5 Feet)" ngModel name="height_feet" required>
+                      </div>
+                      <div class="form-group col-md-6 p-0">
+                          <input type="number" (focus)="notFocused=false" class="form-control input-lg" placeholder="Height (eg. 8 Inch)" ngModel name="height_inch" required>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="show_us_fields">
+                        <input type="number" (focus)="notFocused=false" class="form-control input-lg"  placeholder="Weight (eg. 165 Pounds)" ngModel name="weight" required>
+                      </div>
+                      <div class="form-group" *ngIf="show_metric_fields">
+                        <input type="number" (focus)="notFocused=false" class="form-control input-lg"  placeholder="Height (eg. 180 Centimeters)" ngModel name="height_cm" required>
+                      </div>
+                      <div class="form-group" *ngIf="show_metric_fields">
+                        <input type="number" (focus)="notFocused=false" class="form-control input-lg"  placeholder="Weight (eg. 68 Kilograms)" ngModel name="weight" required>
+                      </div>
+                      <div class="form-group">
+                      <select id="inputState" (focus)="notFocused=false" class="form-control input-lg" ngModel    [(ngModel)]='selectedValue'
+                       name="activity" required > 
+                        <option value="1">Basal Metabolic Rate (BMR)</option>
+                        <option value="1.2">Sedentary - little or no exercise</option>
+                        <option value="1.375">Lightly Active - exercise/sports 1-3 times/week</option>
+                        <option value="1.55">Moderatetely Active - exercise/sports 3-5 times/week</option>
+                        <option value="1.725">Very Active - hard exercise/sports 6-7 times/week</option>
+                        <option value="1.9">Extra Active - very hard exercise/sports or physical job</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <input type="number" (focus)="notFocused=false" class="form-control input-lg"  placeholder="Body fat (e.g, 14%) - (Optional)" ngModel name="fat">
+                        </div>
+                        <div class="alert alert-danger" *ngIf="errorMessage && notFocused">Fields are empty</div>
+                        <div class="panel-heading">
+                            <div class="row">
+                              <div class="col-xs-6 text-center active pr-0">
+                                <div class="sub_btn btns_form" (click)="Trigger_Btn()">
+                                    <h4 class="text-light">CALCULATE</h4></div>
+                              </div>
+                              <div class="col-xs-6 text-center pl-0">
+                                <div class=" clear_btn  units" (click)="clearForm()">
+                                <h4>CLEAR FORM</h4>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="submit" class="d-none" #sub_btn></button>
+                  </form>
+                  <div class="pt-10">
+                  <ul class="list-group" *ngIf="Sub_and_get && !activity_check">
+                    <li class="list-group-item">You need <span class="theme_color bold_text">{{calculated_Data_result.res1}}</span> Calories/day to maintain your weight.</li>
+                    <li class="list-group-item">You need {{calculated_Data_result.res2}} Calories/day to maintain your weight.</li>
+                    <li class="list-group-item">You need {{calculated_Data_result.res3}} Calories/day to lose 2 lb per week.</li>
+                    <li class="list-group-item">You need {{calculated_Data_result.res4}} Calories/day to gain 1 lb per week.</li>
+                    <li class="list-group-item">You need {{calculated_Data_result.res5}} Calories/day to gain 2 lb per week.</li>
+                  </ul>
+                  <ul class="list-group" *ngIf="Sub_and_get && activity_check">
+                    <li class="list-group-item">You need  <span class="theme_color bold_text">{{BMR}}</span> Calories/day to maintain your weight.</li>
+                  </ul>
+                </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+</div>
+</div>
+</div>
+
