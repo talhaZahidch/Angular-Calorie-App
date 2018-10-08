@@ -18,6 +18,7 @@ export class CalorieCalculatorComponent implements OnInit {
   show_us_fields: boolean = false;
   show_metric_fields: boolean = false;
   selected_opt: boolean = false;
+  selectedValue:any = -1; 
   BMR: number = 0;
   user_data = {
     age: 0,
@@ -59,7 +60,7 @@ export class CalorieCalculatorComponent implements OnInit {
   };
   //Form Process functions
   OnSubmit() {
-    if (!this.SubmitForm.valid) {
+    if (!this.SubmitForm.valid || this.SubmitForm.value.activity == -1) {
       this.notFocused = true;
       this.errorMessage = !this.errorMessage;
     }
@@ -111,7 +112,10 @@ export class CalorieCalculatorComponent implements OnInit {
   }
   clearForm() {   // Clear Form on Click Clear Form
     this.SubmitForm.reset();
+    this.selectedValue = -1; 
+
   }
+
   triggerBtn() {   //Trigger Btn of form on Div click (Calculate)
     let el: HTMLElement = this.myDiv.nativeElement as HTMLElement;
     el.click();

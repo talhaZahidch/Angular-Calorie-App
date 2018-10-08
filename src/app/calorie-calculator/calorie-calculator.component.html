@@ -26,8 +26,8 @@
                 <div class="row ">
                   <div class="col-md-12">
                     <div class="form-group border_tab pading-radio">
-                      <label><input type="radio" class="radio-inline" name="gender" value="1" ngModel><span class="outside"><span class="inside"></span></span>Male</label>
-                      <label><input type="radio" class="radio-inline" name="gender" value="2" ngModel><span class="outside"><span class="inside"></span></span>Female</label>
+                      <label><input type="radio" (focus)="notFocused=false" class="radio-inline" required name="gender" value="1" ngModel><span class="outside"><span class="inside"></span></span>Male</label>
+                      <label><input type="radio" (focus)="notFocused=false" class="radio-inline" required name="gender" value="2" ngModel><span class="outside"><span class="inside"></span></span>Female</label>
                     </div>
                   </div>
                 </div>
@@ -54,8 +54,8 @@
                     required>
                 </div>
                 <div class="form-group">
-                  <select id="inputState" (focus)="notFocused=false" placeholder="Your Activity Level"class="form-control input-lg" ngModel  name="activity" required>
-                    <option value="" disabled selected>Your Activity Level</option>
+                  <select id="inputState" (focus)="notFocused=false" placeholder="Your Activity Level"class="form-control input-lg" ngModel [(ngModel)]='selectedValue' name="activity" required>
+                    <option value="-1"  disabled selected>Your Activity Level</option>
                     <option value="1">Basal Metabolic Rate (BMR)</option>
                     <option value="1.2">Sedentary - little or no exercise</option>
                     <option value="1.375">Lightly Active - exercise/sports 1-3 times/week</option>
