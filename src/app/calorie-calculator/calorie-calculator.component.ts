@@ -18,7 +18,6 @@ export class CalorieCalculatorComponent implements OnInit {
   show_us_fields: boolean = false;
   show_metric_fields: boolean = false;
   selected_opt: boolean = false;
-  selectedValue: any = 1;
   BMR: number = 0;
   user_data = {
     age: 0,
@@ -76,13 +75,10 @@ export class CalorieCalculatorComponent implements OnInit {
         this.user_data.hEight = this.SubmitForm.value.height_cm;
       }
       this.user_data.activity_factor = this.SubmitForm.value.activity;
-      this.calculation_calorie();
-      this.SubmitForm.reset();
-      this.select(1);
-
+      this.calculationCalorie();
     }
   }
-  calculation_calorie()    //Calculation of whole data
+  calculationCalorie()    //Calculation of whole data
   {
     if (this.user_data.gender == '1') //Male
     {
@@ -93,10 +89,10 @@ export class CalorieCalculatorComponent implements OnInit {
       this.BMR = 10 * this.user_data.weight + 6.25 * this.user_data.hEight - 5 * this.user_data.age - 161;
     }
     this.BMR = Math.round(this.BMR * this.user_data.activity_factor);
-    this.Finalize_output();
+    this.finalizeOutput();
   }
 
-  Finalize_output() //finalize all data to output
+  finalizeOutput() //finalize all data to output
   {
     if (this.user_data.activity_factor == 1) {
       this.Sub_and_get = true;
@@ -116,8 +112,7 @@ export class CalorieCalculatorComponent implements OnInit {
   clearForm() {   // Clear Form on Click Clear Form
     this.SubmitForm.reset();
   }
-
-  Trigger_Btn() {   //Trigger Btn of form on Div click (Calculate)
+  triggerBtn() {   //Trigger Btn of form on Div click (Calculate)
     let el: HTMLElement = this.myDiv.nativeElement as HTMLElement;
     el.click();
   }
