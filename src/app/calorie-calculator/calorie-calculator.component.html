@@ -88,10 +88,10 @@
                 <ul class="list-group" *ngIf="Sub_and_get && !activity_check">
                   <li class="list-group-item">You need <span class="theme_color bold_text">{{calculated_Data_result.res1}}</span> Calories/day to maintain your
                     weight.</li>
-                  <li class="list-group-item">You need {{calculated_Data_result.res2}} Calories/day to maintain your weight.</li>
-                  <li class="list-group-item">You need {{calculated_Data_result.res3}} Calories/day to lose 2 lb per week.</li>
-                  <li class="list-group-item">You need {{calculated_Data_result.res4}} Calories/day to gain 1 lb per week.</li>
-                  <li class="list-group-item">You need {{calculated_Data_result.res5}} Calories/day to gain 2 lb per week.</li>
+                  <li class="list-group-item">You need {{calculated_Data_result.res2}} Calories/day to lose <span *ngIf="show_us_fields">1 lb </span> <span *ngIf="!show_us_fields">0.5 kg </span>per week.</li>
+                  <li class="list-group-item">You need {{calculated_Data_result.res3}} Calories/day to lose <span *ngIf="show_us_fields">2 lb </span> <span *ngIf="!show_us_fields">1 kg </span>per week.</li>
+                  <li class="list-group-item">You need {{calculated_Data_result.res4}} Calories/day to gain <span *ngIf="show_us_fields">1 lb </span> <span *ngIf="!show_us_fields">0.5 kg </span>per week.</li>
+                  <li class="list-group-item">You need {{calculated_Data_result.res5}} Calories/day to gain <span *ngIf="show_us_fields">2 lb </span> <span *ngIf="!show_us_fields">1 kg </span>per week.</li>
                 </ul>
                 <ul class="list-group" *ngIf="Sub_and_get && activity_check">
                   <li class="list-group-item">You need <span class="theme_color bold_text">{{BMR}}</span> Calories/day to maintain your weight.</li>

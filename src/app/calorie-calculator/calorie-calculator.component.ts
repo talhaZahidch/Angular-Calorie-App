@@ -48,11 +48,14 @@ export class CalorieCalculatorComponent implements OnInit {
       this.Unit_selected = 1;
       this.show_us_fields = true;    //Us unit form fields.
       this.show_metric_fields = false;
+      this.Sub_and_get = false;
+
     }
     else {
       this.Unit_selected = 2;
       this.show_us_fields = false;    //Us unit form fields.
       this.show_metric_fields = true;
+      this.Sub_and_get = false;
     }
   };
   isActive(item) {
